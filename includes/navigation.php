@@ -22,8 +22,8 @@
                     <?php
 
                     $query="Select * from categories";
-                    $select_all_categories_query=mysqli_query($connection,$query);
-                    while($row=mysqli_fetch_assoc($select_all_categories_query))
+                    $select_categories_sidebar=mysqli_query($connection,$query);
+                    while($row=mysqli_fetch_assoc($select_categories_sidebar))
                     {
                         $cat_title=$row["cat_title"];
                         echo "<li> <a href='#'>{$cat_title}</a></li>";// variable pass korte caile double {}
