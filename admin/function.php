@@ -1,4 +1,13 @@
 <?php
+function queryConfirmationcheck($result)
+{global $connection;
+    if(!$result)
+    {
+        die("Query Faild .".mysqli_errno($connection));
+    }
+}
+
+
 function insert_category()
 {
     global $connection;
