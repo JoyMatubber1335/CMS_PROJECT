@@ -1,3 +1,6 @@
+
+
+
 <?php
 include "includes/admin_header.php";
 
@@ -80,11 +83,7 @@ include "includes/admin_navigation.php";
 
                         <div class="col-xs-6">
 
-                        <?php
-                            $query="Select * from categories ";
-                            $select_categories=mysqli_query($connection,$query);
-
-                       ?>
+                        
                          <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
@@ -94,7 +93,11 @@ include "includes/admin_navigation.php";
                                 </thead>
                                <tbody>
 
-                               <?php
+                               <?php   // SHOW ALL CATEGORY 
+
+                              $query="Select * from categories ";
+                              $select_categories=mysqli_query($connection,$query);
+
                                     while($row=mysqli_fetch_assoc($select_categories))
                                     {
                                         $cat_id=$row["cat_id"];
@@ -102,11 +105,27 @@ include "includes/admin_navigation.php";
                                         echo "<tr>";
                                         echo " <td>{$cat_id} </td>";
                                         echo " <td>{$cat_title} </td>";// variable pass korte caile double {}
+                                        echo " <td><a href='categories.php?delete={$cat_id}'>Delete</a> </td>"; 
                                         echo "</tr>";
 
                                     }
 
-                                ?>                                              
+                                ?>     
+                                
+                                
+                                <?php   //DELETE PART CATEGORY 
+
+                                     if(isset($_GET['delete']))
+                                     {
+                                        $the_cat_id=$_GET['delete'];
+                                        $query="DELETE from categories where cat_id= {$the_cat_id} ";
+                                        $delete_query=mysqli_query($connection,$query);
+                                        header("Location: categories.php");  // refresinng the page 
+
+                                     }                             
+
+
+                                ?>
 
                             </tbody>
                 
