@@ -29,7 +29,7 @@
                                     $post_id=$row['post_id'];
                                     $post_author=$row['post_author'];
                                     $post_title=$row['post_title'];
-                                    $post_cateegory_id=$row['post_category_id'];
+                                    $post_category_id=$row['post_category_id'];
                                     $post_status=$row['post_status'];
                                     $post_image=$row['post_image'];
                                     $post_tags=$row['post_tags'];
@@ -40,7 +40,7 @@
                                     echo "<td> {$post_id}</td>";
                                     echo "<td>{$post_author} </td>";
                                     echo "<td>{$post_title} </td>";  
-                                    echo "<td>{$post_cateegory_id} </td>";
+                                    echo "<td>{$post_category_id} </td>";
                                     echo "<td>{$post_status} </td>";
                                     echo "<td> <img  src='../images/$post_image' width='100'></td>";
                                     echo "<td> {$post_tags}</td>";

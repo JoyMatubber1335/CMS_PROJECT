@@ -6,7 +6,7 @@ if(isset($_POST["create_post"]))
 { 
     $post_title=$_POST['title'];
     $post_author=$_POST['author'];
-    $post_cateegory_id=$_POST['post_category_id'];
+    $post_category_id=$_POST['post_category_id'];
     $post_status=$_POST['post_status'];
     $post_image=$_FILES['image']['name'];
     $post_image_temp=$_FILES['image']['tmp_name'];
