@@ -77,11 +77,21 @@ include "includes/admin_navigation.php";
   
                         </form>
 
+                        <!-- Update  Form  -->
+                                <?php
 
+                                if(isset($_GET['edit']))
+                                {
+                                    $cat_id=$_GET['edit'];
+                                    include "includes/update_categories.php";
 
-                        </div>
+                                }
 
-                        <div class="col-xs-6">
+                                ?>
+
+                        <!-- </div>  -->
+<!-- add category form  -->
+                        <div class="col-xs-6"> 
 
                         
                          <table class="table table-bordered table-hover">
@@ -105,7 +115,8 @@ include "includes/admin_navigation.php";
                                         echo "<tr>";
                                         echo " <td>{$cat_id} </td>";
                                         echo " <td>{$cat_title} </td>";// variable pass korte caile double {}
-                                        echo " <td><a href='categories.php?delete={$cat_id}'>Delete</a> </td>"; 
+                                        echo " <td><a href='categories.php?delete={$cat_id}'>Delete</a> </td>";
+                                        echo " <td><a href='categories.php?edit={$cat_id}'>Edit</a> </td>";
                                         echo "</tr>";
 
                                     }
