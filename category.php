@@ -20,7 +20,13 @@ include "includes/navigation.php";
 
                  <?php
 
-                    $query="Select * from posts";
+
+if(isset($_GET['category']))
+{
+    $post_category_id=$_GET['category'];
+}
+
+                    $query="Select * from posts WHERE post_category_id= $post_category_id ";
                     $select_all_posts_query=mysqli_query($connection,$query);
                     while($row=mysqli_fetch_assoc($select_all_posts_query))
                     {
@@ -30,6 +36,7 @@ include "includes/navigation.php";
                         $post_date=$row['post_date'];
                         $post_image=$row['post_image'];
                         $post_content=substr($row['post_content'] ,0,100);
+                       
                        
                      
                ?>
