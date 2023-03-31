@@ -20,7 +20,7 @@ include "includes/navigation.php";
 
                  <?php
 
-                    $query="Select * from posts";
+                    $query="Select * from posts where post_status ='published' ";
                     $select_all_posts_query=mysqli_query($connection,$query);
                     while($row=mysqli_fetch_assoc($select_all_posts_query))
                     {
@@ -30,6 +30,16 @@ include "includes/navigation.php";
                         $post_date=$row['post_date'];
                         $post_image=$row['post_image'];
                         $post_content=substr($row['post_content'] ,0,100);
+                        $post_status=$row['post_status'];
+                        if($post_status!=="published"){
+                            echo "<h1> no post yet </h1>";
+
+
+                        }
+                        else
+                        {
+
+                        
                        
                      
                ?>
@@ -57,7 +67,7 @@ include "includes/navigation.php";
 
                 <hr>
 
-               <?php }?>
+               <?php }}?>
 
 
 

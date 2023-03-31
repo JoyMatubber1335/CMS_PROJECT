@@ -9,8 +9,8 @@
                                         <th>Status</th>
                                         <th>In Response To</th>
                                         <th>Date</th>
-                                        <th>Approve</th>
-                                        <th>UnAprove</th>
+                                        <th>Approved</th>
+                                        <th>Unapproved</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
                                         
@@ -69,13 +69,13 @@
                                     }
                                                               
                                     echo "<td> {$comment_date}</td>";                                  
-                                    echo "<td ><a href ='posts.php?source=edit_post&p_id='>Aprove</a></td>";
-                                    echo "<td ><a href ='posts.php?delete='>Unapprove</a></td>";
+                                    echo "<td ><a href ='comments.php?approve=$comment_id'>Aprove</a></td>";
+                                    echo "<td ><a href ='comments.php?unapprove=$comment_id '>Unapprove</a></td>";
                                     echo "<td ><a href ='posts.php?source=edit_post&p_id='>Edit</a></td>";
-                                    echo "<td ><a href ='posts.php?delete='>Delete</a></td>";
+                                    echo "<td ><a href ='comments.php?delete= $comment_id'>Delete</a></td>";
                                     echo "</tr>";
-                                   
-
+                                    
+  
                                 }
 
                              ?>
@@ -89,11 +89,33 @@
 
 
                             <?php
+
+// approve 
+
+                             if(isset($_GET['approve']))  
+                                {
+                                    $the_comment_id=$_GET['approve'];
+                                    $query=" UPDATE comments set comment_status = 'Approved' where comment_id=$the_comment_id ";
+                                    $approave_comment_query=mysqli_query($connection,$query);
+                                    header("Location: ./comments.php");
+
+                                }
+
+                                // unapproave 
+                            if(isset($_GET['unapprove']))  
+                            {
+                                $the_comment_id=$_GET['unapprove'];
+                                $query=" UPDATE comments set comment_status = 'Unapproved' where comment_id=$the_comment_id ";
+                                $unapproave_comment_query=mysqli_query($connection,$query);
+                                header("Location: ./comments.php");
+
+                            }
                             if(isset($_GET['delete']))
                             {
-                                $the_post_id=$_GET['delete'];
-                                $query="DELETE from posts where post_id={$the_post_id} ";
+                                $the_comment_id=$_GET['delete'];
+                                $query="DELETE from comments where comment_id={$the_comment_id} ";
                                 $delete_query=mysqli_query($connection,$query);
+                                header("Location: ./comments.php");
                             }
 
 

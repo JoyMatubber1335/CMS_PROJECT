@@ -1,4 +1,4 @@
-                 
+       <?php  ob_start();?>          
        <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
@@ -49,10 +49,6 @@
                                             $cat_id=$row["cat_id"];
                                             $cat_title=$row["cat_title"];
                                             
-                                            
-
-
-                                        
                                     echo "<td>{$cat_title} </td>";
                                         }
 
@@ -86,7 +82,9 @@
                                 $the_post_id=$_GET['delete'];
                                 $query="DELETE from posts where post_id={$the_post_id} ";
                                 $delete_query=mysqli_query($connection,$query);
+                                 header("Location :posts.php");
                             }
 
 
                             ?>
+ 
