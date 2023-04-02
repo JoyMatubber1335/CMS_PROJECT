@@ -1,13 +1,14 @@
 <?php
+
 session_start();
+
 include "db.php";
 
 if(isset($_POST['login'])){
-    echo "if";
-    echo "<br>";
-  echo   $username= $_POST['username'];
-    echo "<br>";
-   echo  $password=$_POST['password'];
+    
+     $username= $_POST['username'];
+    
+     $password=$_POST['password'];
 
   $username=mysqli_real_escape_string($connection,$username); // clean up the data so that hacker can't hack or send dumy data 
   $password=mysqli_real_escape_string($connection,$password);
@@ -20,25 +21,33 @@ if(isset($_POST['login'])){
 
  while($row = mysqli_fetch_array($select_user_query))
  {
-    echo "<br>";
-    echo "while";
-    echo "<br>";
+    
       $db_user_id=$row['user_id'];
-     echo  $db_username=$row['username'];
-     echo "<br>";
-     echo  $db_user_password=$row['user_password'];
+       $db_username=$row['username'];
+      
+       $db_user_password=$row['user_password'];
       $db_user_firstname=$row['user_firstname'];
       $db_user_lastname=$row['user_lastname'];
       $db_user_role=$row['user_role'];
       
  }
- if($username === $db_username or $password === $db_user_password)
+ if($username === $db_username and $password === $db_user_password)
  {
    
 
       
    //   header ('Location : );
+  $_SESSION['username']=$db_username;
+  $_SESSION['user_firstname']=$db_user_firstname;
+ $_SESSION['user_lastname']=$db_user_lastname;
+ $_SESSION['user_role']=$db_user_role;
+
+
+
+
   header('Location: ../admin/index.php');
+
+
  
   
 
